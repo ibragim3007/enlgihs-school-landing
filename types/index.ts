@@ -18,7 +18,6 @@ export interface ProblemItem {
 export interface Program {
   id: number;
   title: string;
-  ageRange: string;
   description: string;
   features: string[];
 }
@@ -44,4 +43,18 @@ export interface SocialLink {
 export interface FormOption {
   value: string;
   label: string;
+}
+
+export interface Package {
+  id: number;
+  icon: string;
+  name: string;
+  tagline: string;
+  description: string;
+  features: string[];
+  price: number;
+  currency: string;
+  period: string;
+  highlighted: boolean;
+  badge?: string;
 }

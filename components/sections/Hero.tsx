@@ -1,10 +1,7 @@
 import { SECTION_IDS } from "@/constants/navigation";
 import {
-  HERO_BADGE,
   HERO_HEADING,
-  HERO_SUBHEADING,
   HERO_DESCRIPTION,
-  HERO_FEATURE,
   HERO_CTA_TEXT,
   HERO_STATS,
 } from "@/constants/hero";
@@ -22,36 +19,13 @@ export default function Hero({ onOpenForm }: HeroProps) {
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
             {/* Left — Text */}
             <div className="flex flex-col gap-6">
-              <span className="inline-block w-fit rounded-full bg-primary-800/10 px-4 py-1.5 text-sm font-semibold text-primary-800">
-                {HERO_BADGE}
-              </span>
-
               <h1 className="text-3xl font-bold leading-tight text-neutral-950 sm:text-4xl lg:text-[52px] lg:leading-[1.1]">
                 {HERO_HEADING}
               </h1>
 
-              <p className="text-xl font-semibold text-primary-700 sm:text-2xl">
-                {HERO_SUBHEADING}
-              </p>
-
-              <p className="text-base text-neutral-700 leading-relaxed lg:text-lg">
+              <p className="text-base text-neutral-700 leading-relaxed lg:text-lg whitespace-pre-line">
                 {HERO_DESCRIPTION}
               </p>
-
-              <div className="flex items-start gap-3 text-neutral-700">
-                <svg
-                  className="mt-0.5 h-5 w-5 shrink-0 text-primary-700"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span className="text-base lg:text-lg">{HERO_FEATURE}</span>
-              </div>
 
               <div className="pt-2">
                 <Button

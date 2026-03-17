@@ -4,12 +4,19 @@ import { useState } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
-import Problems from "@/components/sections/Problems";
 import About from "@/components/sections/About";
-import Programs from "@/components/sections/Programs";
 import Advantages from "@/components/sections/Advantages";
-import Diagnostics from "@/components/sections/Diagnostics";
+import Programs from "@/components/sections/Programs";
+import Lessons from "@/components/sections/Lessons";
+import Reading from "@/components/sections/Reading";
+import Cabinet from "@/components/sections/Cabinet";
+import Ecosystem from "@/components/sections/Ecosystem";
+import Packages from "@/components/sections/Packages";
+import Psychologist from "@/components/sections/Psychologist";
+import ForParents from "@/components/sections/ForParents";
+import Founder from "@/components/sections/Founder";
 import Testimonials from "@/components/sections/Testimonials";
+import FinalCTA from "@/components/sections/FinalCTA";
 import ContactForm from "@/components/sections/ContactForm";
 
 export default function Home() {
@@ -23,12 +30,19 @@ export default function Home() {
       <Header onOpenForm={openForm} />
       <main>
         <Hero onOpenForm={openForm} />
-        <Problems />
         <About />
-        <Programs />
         <Advantages />
-        <Diagnostics onOpenForm={openForm} />
+        <Programs />
+        <Lessons />
+        <Reading />
+        <Cabinet />
+        <Ecosystem />
+        <Packages onOpenForm={openForm} />
+        <Psychologist />
+        <ForParents />
+        <Founder />
         <Testimonials />
+        <FinalCTA onOpenForm={openForm} />
       </main>
       <Footer />
       <ContactForm isOpen={formOpen} onClose={closeForm} />

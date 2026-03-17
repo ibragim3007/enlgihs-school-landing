@@ -6,8 +6,17 @@ export const SECTION_IDS = {
   about: "about",
   programs: "programs",
   advantages: "advantages",
+  lessons: "lessons",
+  reading: "reading",
+  cabinet: "cabinet",
+  ecosystem: "ecosystem",
+  packages: "packages",
+  psychologist: "psychologist",
+  founder: "founder",
+  forParents: "for-parents",
   diagnostics: "diagnostics",
   testimonials: "testimonials",
+  finalCTA: "final-cta",
 } as const;
 
 export const NAV_LINKS: NavLink[] = [
@@ -38,5 +47,5 @@ export const NAV_LINKS: NavLink[] = [
   },
 ];
 
-export const SCHOOL_NAME = "English School";
-export const CTA_BUTTON_TEXT = "Оставить заявку";
+export const SCHOOL_NAME = "English Dome";
+export const CTA_BUTTON_TEXT = "Записаться на пробный урок";

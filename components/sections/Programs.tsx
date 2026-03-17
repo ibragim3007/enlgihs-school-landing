@@ -23,11 +23,7 @@ export default function Programs() {
               key={program.id}
               className="group flex flex-col rounded-3xl bg-surface p-6 transition-shadow hover:shadow-lg sm:p-8"
             >
-              <span className="inline-block w-fit rounded-full bg-primary-800/10 px-3 py-1 text-xs font-semibold text-primary-800">
-                {program.ageRange}
-              </span>
-
-              <h3 className="mt-4 text-xl font-bold text-neutral-950">
+              <h3 className="text-xl font-bold text-neutral-950">
                 {program.title}
               </h3>
 

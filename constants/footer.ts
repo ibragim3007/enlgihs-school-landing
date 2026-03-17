@@ -1,10 +1,14 @@
 import type { SocialLink } from "@/types";
 
-export const FOOTER_PHONE = "+7 (999) 123-45-67";
-export const FOOTER_EMAIL = "info@englishschool.ru";
-export const FOOTER_ADDRESS = "г. Москва, ул. Примерная, д. 1";
+export const FOOTER_PHONE = "[вставить номер]";
+export const FOOTER_EMAIL = "[вставить email]";
+export const FOOTER_ADDRESS = "";
+
+export const FOOTER_TEXT =
+  "English Dome — английский, как дома\nОнлайн-школа английского языка для детей";
 
 export const SOCIAL_LINKS: SocialLink[] = [
-  { platform: "Telegram", href: "#" },
-  { platform: "WhatsApp", href: "#" },
+  { platform: "Telegram", href: "[вставить]" },
+  { platform: "WhatsApp", href: "[вставить]" },
+  { platform: "VK", href: "[вставить ссылку]" },
 ];
