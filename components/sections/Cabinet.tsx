@@ -7,37 +7,37 @@ import {
 import SectionHeading from "@/components/ui/SectionHeading";
 
 export default function Cabinet() {
+  const icons = ["📝", "📚", "🔄", "📊"];
+
   return (
-    <section id={SECTION_IDS.cabinet} className="py-16 lg:py-24">
+    <section
+      id={SECTION_IDS.cabinet}
+      className="py-16 lg:py-24 bg-gradient-to-br from-primary-50/20 to-white"
+    >
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         <SectionHeading className="mb-6 lg:mb-10">
           {CABINET_HEADING}
         </SectionHeading>
 
-        <p className="text-base text-neutral-700 leading-relaxed lg:text-lg max-w-2xl mb-10">
+        <p className="text-base text-neutral-700 leading-relaxed lg:text-lg max-w-2xl mb-12 lg:mb-16">
           {CABINET_DESCRIPTION}
         </p>
 
-        <div className="grid gap-4 sm:grid-cols-2">
-          {CABINET_FEATURES.map((feature) => (
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {CABINET_FEATURES.map((feature, idx) => (
             <div
               key={feature}
-              className="flex items-start gap-4 rounded-2xl bg-surface p-6 sm:p-8"
+              className="group flex flex-col items-center justify-center text-center p-8 rounded-2xl bg-white border-2 border-primary-500 hover:border-primary-400 hover:shadow-lg hover:bg-primary-50 transition-all"
             >
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-800/10 text-primary-700 mt-0.5">
-                <svg
-                  className="h-6 w-6"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+              {/* Icon */}
+              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">
+                {icons[idx % icons.length]}
               </div>
-              <span className="text-sm text-neutral-700 lg:text-base">{feature}</span>
+
+              {/* Text */}
+              <p className="text-base lg:text-lg font-semibold text-neutral-900 leading-relaxed group-hover:text-primary-700 transition-colors">
+                {feature}
+              </p>
             </div>
           ))}
         </div>

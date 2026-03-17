@@ -69,7 +69,7 @@ export default function Psychologist() {
             {/* Conclusion */}
             <div className="rounded-2xl bg-primary-700/5 p-6 border-l-4 border-primary-700 mb-8">
               <p className="text-base lg:text-lg text-neutral-700 leading-relaxed italic">
-                "{PSYCHOLOGIST_CONCLUSION}"
+                &ldquo;{PSYCHOLOGIST_CONCLUSION}&rdquo;
               </p>
             </div>
 
