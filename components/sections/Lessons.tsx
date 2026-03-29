@@ -1,9 +1,5 @@
 import { SECTION_IDS } from "@/constants/navigation";
-import {
-  LESSONS_HEADING,
-  LESSONS_DESCRIPTION,
-  LESSONS_ADDITIONAL,
-} from "@/constants/lessons";
+import { LESSONS_HEADING, LESSONS_DESCRIPTION } from "@/constants/lessons";
 import SectionHeading from "@/components/ui/SectionHeading";
 
 export default function Lessons() {

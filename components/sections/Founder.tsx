@@ -112,7 +112,7 @@ export default function Founder() {
                   key={idx}
                   className="text-base lg:text-lg text-neutral-900 leading-relaxed italic"
                 >
-                  "{paragraph}"
+                  &quot;{paragraph}&quot;
                 </p>
               ))}
             </div>

@@ -30,7 +30,7 @@ export default function ForParents() {
                 🎯 Вы получаете:
               </p>
               <ul className="space-y-3">
-                {FOR_PARENTS_BENEFITS.map((benefit, idx) => (
+                {FOR_PARENTS_BENEFITS.map((benefit) => (
                   <li
                     key={benefit}
                     className="flex items-center gap-3 p-3 rounded-lg bg-primary-50 border border-primary-500 hover:bg-primary-100 transition-colors"
@@ -58,7 +58,7 @@ export default function ForParents() {
               </h3>
 
               <p className="text-neutral-700 leading-relaxed italic text-base lg:text-lg border-l-4 border-primary-700 pl-4">
-                "{FOR_PARENTS_CONCLUSION}"
+                &quot;{FOR_PARENTS_CONCLUSION}&quot;
               </p>
 
               <div className="mt-6 pt-6 border-t border-neutral-200 flex items-center justify-between">

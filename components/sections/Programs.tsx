@@ -10,9 +10,9 @@ import {
 import SectionHeading from "@/components/ui/SectionHeading";
 
 export default function Programs() {
-  const [expandedIds, setExpandedIds] = useState<string[]>([]);
+  const [expandedIds, setExpandedIds] = useState<number[]>([]);
 
-  const toggleExpanded = (id: string) => {
+  const toggleExpanded = (id: number) => {
     setExpandedIds((prev) =>
       prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id],
     );
