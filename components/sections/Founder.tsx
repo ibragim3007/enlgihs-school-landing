@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { SECTION_IDS } from "@/constants/navigation";
 import {
   FOUNDER_HEADING,
@@ -29,8 +30,16 @@ export default function Founder() {
           <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 mb-12 items-start">
             {/* Avatar */}
             <div className="lg:col-span-1 flex flex-col items-center">
-              <div className="w-32 h-32 lg:w-40 lg:h-40 rounded-2xl bg-gradient-to-br from-primary-600 to-primary-800 flex items-center justify-center text-7xl shadow-lg">
-                👩‍🏫
+              <div className="w-40 h-52 lg:w-48 lg:h-64 rounded-2xl overflow-hidden shadow-lg">
+                <Image
+                  src="/assets/teacher-picture.jpeg"
+                  alt="Полина — основатель онлайн-школы английского языка English Dome, сертифицированный преподаватель TESOL и TEFL"
+                  width={192}
+                  height={256}
+                  sizes="(max-width: 1024px) 160px, 192px"
+                  priority
+                  className="w-full h-full object-cover"
+                />
               </div>
               <p className="mt-6 text-center text-sm font-semibold text-primary-700 uppercase tracking-wide">
                 Основатель

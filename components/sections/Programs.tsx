@@ -14,7 +14,7 @@ export default function Programs() {
 
   const toggleExpanded = (id: string) => {
     setExpandedIds((prev) =>
-      prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]
+      prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id],
     );
   };
 
@@ -67,7 +67,9 @@ export default function Programs() {
 
                 <div
                   className={`overflow-hidden transition-all duration-300 sm:mt-6 sm:max-h-none sm:opacity-100 ${
-                    isExpanded ? "mt-6 max-h-96 opacity-100" : "max-h-0 opacity-0"
+                    isExpanded
+                      ? "mt-6 max-h-96 opacity-100"
+                      : "max-h-0 opacity-0"
                   }`}
                 >
                   <ul className="flex flex-col gap-2.5">
