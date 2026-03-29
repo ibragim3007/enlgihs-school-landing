@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { SECTION_IDS } from "@/constants/navigation";
 import {
   HERO_HEADING,
@@ -49,21 +50,16 @@ export default function Hero({ onOpenForm }: HeroProps) {
                 </p>
               </div>
 
-              {/* Placeholder photo 1 */}
-              <div className="rounded-3xl bg-gradient-to-br from-primary-500/20 to-primary-700/30 aspect-square flex items-center justify-center">
-                <svg
-                  className="h-16 w-16 text-primary-700/40"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
+              {/* Kids photo */}
+              <div className="relative rounded-3xl overflow-hidden aspect-square">
+                <Image
+                  src="/assets/kids-picture.png"
+                  alt="Дети изучают английский язык онлайн в школе English Dome — весёлые уроки для школьников 1-11 классов"
+                  fill
+                  // sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 280px"
+                  priority
+                  className="object-cover"
+                />
               </div>
 
               {/* Placeholder photo 2 */}
