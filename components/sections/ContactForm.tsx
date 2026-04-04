@@ -13,6 +13,7 @@ interface ContactFormProps {
 export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
   const [phone, setPhone] = useState("");
   const [program, setProgram] = useState("");
+  const [messenger, setMessenger] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -22,6 +23,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
       setSubmitted(false);
       setPhone("");
       setProgram("");
+      setMessenger("");
       onClose();
     }, 2000);
   };
@@ -98,6 +100,27 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
                     {opt.label}
                   </option>
                 ))}
+              </select>
+            </div>
+
+            <div>
+              <label
+                htmlFor="messenger"
+                className="mb-1.5 block text-sm font-medium text-neutral-950"
+              >
+                Связаться через
+              </label>
+              <select
+                id="messenger"
+                value={messenger}
+                onChange={(e) => setMessenger(e.target.value)}
+                className="w-full appearance-none rounded-xl border border-neutral-200 bg-surface-muted px-4 py-3 text-base text-neutral-950 outline-none transition-colors focus:border-primary-700 focus:ring-2 focus:ring-primary-700/20"
+              >
+                <option value="">Выберите мессенджер</option>
+                <option value="telegram">Telegram</option>
+                <option value="whatsapp">WhatsApp</option>
+                <option value="vk">ВКонтакте</option>
+                <option value="max">Max</option>
               </select>
             </div>
 
