@@ -4,142 +4,115 @@ import Image from "next/image";
 import { SECTION_IDS } from "@/constants/navigation";
 import {
   FOUNDER_HEADING,
-  FOUNDER_INTRO,
-  FOUNDER_BACKGROUND,
-  FOUNDER_CERTIFICATIONS,
-  FOUNDER_ACHIEVEMENTS,
-  FOUNDER_PHILOSOPHY,
-  FOUNDER_APPROACH,
-  FOUNDER_CONCLUSION,
+  FOUNDER_CREDENTIALS,
+  FOUNDER_BIO,
+  FOUNDER_QUOTE,
+  FOUNDER_QUOTE_HIGHLIGHT,
+  FOUNDER_MISSION,
+  FOUNDER_CLOSING,
+  FOUNDER_CERT_EFSET,
+  FOUNDER_CERT_SCORE,
 } from "@/constants/founder";
-import SectionHeading from "@/components/ui/SectionHeading";
 
 export default function Founder() {
   return (
-    <section
-      id={SECTION_IDS.founder}
-      className="py-16 lg:py-24 bg-gradient-to-b from-neutral-50 to-white"
-    >
+    <section id={SECTION_IDS.founder} className="py-16 lg:py-24">
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
-        <SectionHeading className="mb-12 lg:mb-16">
-          {FOUNDER_HEADING}
-        </SectionHeading>
+        <div className="max-w-3xl mx-auto lg:max-w-none">
+          <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-neutral-950 mb-10 lg:mb-14">
+            {FOUNDER_HEADING}
+          </h2>
 
-        <div className="max-w-4xl mx-auto">
-          {/* Avatar placeholder with intro */}
-          <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 mb-12 items-start">
-            {/* Avatar */}
-            <div className="lg:col-span-1 flex flex-col items-center">
-              <div className="w-40 h-52 lg:w-48 lg:h-64 rounded-2xl overflow-hidden shadow-lg">
-                <Image
-                  src="/assets/teacher-picture.jpeg"
-                  alt="Полина — основатель онлайн-школы английского языка English Dome, сертифицированный преподаватель TESOL и TEFL"
-                  width={192}
-                  height={256}
-                  sizes="(max-width: 1024px) 160px, 192px"
-                  priority
-                  className="w-full h-full object-cover"
-                />
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+            {/* Left — photo + bio */}
+            <div>
+              <div className="flex gap-5 sm:gap-6 items-start mb-8">
+                <div className="w-36 h-44 sm:w-44 sm:h-56 lg:w-52 lg:h-64 flex-shrink-0 rounded-2xl overflow-hidden shadow-lg">
+                  <Image
+                    src="/assets/teacher-picture.jpeg"
+                    alt="Полина — основатель онлайн-школы английского языка English Dome, сертифицированный преподаватель TESOL и TEFL"
+                    width={208}
+                    height={256}
+                    sizes="(max-width: 640px) 144px, (max-width: 1024px) 176px, 208px"
+                    priority
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                <div className="pt-1 space-y-3">
+                  <p className="text-xs sm:text-sm font-bold text-primary-800 uppercase tracking-wider">
+                    {FOUNDER_CREDENTIALS}
+                  </p>
+                  {FOUNDER_BIO.map((paragraph, idx) => (
+                    <p
+                      key={idx}
+                      className="text-sm sm:text-base text-neutral-700 leading-relaxed"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
               </div>
-              <p className="mt-6 text-center text-sm font-semibold text-primary-700 uppercase tracking-wide">
-                Основатель
-                <br />
-                English Dome
-              </p>
-              <div className="mt-4 flex gap-2">
-                <span className="px-3 py-1 text-xs font-semibold text-white bg-primary-700 rounded-full">
-                  TESOL
-                </span>
-                <span className="px-3 py-1 text-xs font-semibold text-white bg-primary-700 rounded-full">
-                  TEFL
-                </span>
-              </div>
             </div>
 
-            {/* Intro text */}
-            <div className="lg:col-span-2">
-              <p className="text-xl lg:text-2xl font-bold text-neutral-950 leading-relaxed mb-4">
-                {FOUNDER_INTRO}
-              </p>
-              <div className="h-1 w-16 bg-gradient-to-r from-primary-700 to-primary-400"></div>
-            </div>
-          </div>
-
-          {/* Background paragraphs */}
-          <div className="space-y-4 mb-8 pb-8 border-b border-neutral-200">
-            {FOUNDER_BACKGROUND.map((paragraph, idx) => (
-              <p
-                key={idx}
-                className="text-base lg:text-lg text-neutral-700 leading-relaxed"
-              >
-                {paragraph}
-              </p>
-            ))}
-          </div>
-
-          {/* Certifications & Achievements - Grid */}
-          <div className="grid md:grid-cols-2 gap-6 mb-10">
-            <div className="p-6 rounded-2xl bg-primary-50 border border-primary-200">
-              <p className="text-sm font-bold text-primary-700 uppercase tracking-wide mb-3 flex items-center gap-2">
-                <span className="text-xl">🏆</span>
-                Сертификаты
-              </p>
-              <p className="text-base text-neutral-700 leading-relaxed">
-                {FOUNDER_CERTIFICATIONS}
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-green-50 border border-green-200">
-              <p className="text-sm font-bold text-green-700 uppercase tracking-wide mb-3 flex items-center gap-2">
-                <span className="text-xl">⭐</span>
-                Достижения
-              </p>
-              <p className="text-base text-neutral-700 leading-relaxed">
-                {FOUNDER_ACHIEVEMENTS}
-              </p>
-            </div>
-          </div>
-
-          {/* Philosophy - Highlighted section */}
-          <div className="rounded-3xl bg-gradient-to-br from-primary-100 to-primary-50 p-8 lg:p-10 border border-primary-300 mb-10">
-            <p className="text-sm font-bold text-primary-700 uppercase tracking-wide mb-4 flex items-center gap-2">
-              <span className="text-2xl">💚</span>
-              Философия обучения
-            </p>
-            <div className="space-y-4">
-              {FOUNDER_PHILOSOPHY.map((paragraph, idx) => (
-                <p
-                  key={idx}
-                  className="text-base lg:text-lg text-neutral-900 leading-relaxed italic"
-                >
-                  &quot;{paragraph}&quot;
+            {/* Right — quote card + certs */}
+            <div className="space-y-6">
+              <div className="rounded-3xl bg-gradient-to-b from-primary-50 to-primary-100/60 p-6 sm:p-8 lg:p-10 space-y-5">
+                <p className="text-lg sm:text-xl lg:text-2xl font-semibold text-neutral-900 leading-snug">
+                  <span className="text-primary-400 text-3xl lg:text-4xl leading-none">
+                    &ldquo;
+                  </span>
+                  {FOUNDER_QUOTE.split(FOUNDER_QUOTE_HIGHLIGHT).map(
+                    (part, i, arr) =>
+                      i < arr.length - 1 ? (
+                        <span key={i}>
+                          {part}
+                          <strong className="font-bold">
+                            {FOUNDER_QUOTE_HIGHLIGHT}
+                          </strong>
+                        </span>
+                      ) : (
+                        <span key={i}>{part}</span>
+                      )
+                  )}
+                  <span className="text-primary-400 text-3xl lg:text-4xl leading-none">
+                    &rdquo;
+                  </span>
                 </p>
-              ))}
+
+                <p className="text-sm sm:text-base text-neutral-700 leading-relaxed">
+                  {FOUNDER_MISSION}
+                </p>
+              </div>
+
+              <div className="space-y-2">
+                {FOUNDER_CLOSING.map((paragraph, idx) => (
+                  <p
+                    key={idx}
+                    className="text-sm sm:text-base text-neutral-700 leading-relaxed"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-neutral-200 shadow-sm">
+                  <span className="text-xl">🏆</span>
+                  <span className="text-sm sm:text-base font-semibold text-neutral-900">
+                    {FOUNDER_CERT_EFSET}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-neutral-200 shadow-sm">
+                  <span className="text-yellow-400 text-xl">⭐</span>
+                  <span className="text-sm sm:text-base text-neutral-700">
+                    Оценка{" "}
+                    <span className="font-bold text-neutral-900">97/100</span>{" "}
+                    по международной шкале
+                  </span>
+                </div>
+              </div>
             </div>
-          </div>
-
-          {/* Approach */}
-          <div className="bg-white p-8 rounded-2xl border-l-4 border-primary-700 mb-10 shadow-md">
-            <p className="text-base lg:text-lg text-neutral-700 leading-relaxed font-medium">
-              {FOUNDER_APPROACH}
-            </p>
-          </div>
-
-          {/* Conclusion - Final message */}
-          <div className="space-y-4 pt-8 border-t border-neutral-200">
-            {FOUNDER_CONCLUSION.map((paragraph, idx) => (
-              <p
-                key={idx}
-                className="text-lg lg:text-xl text-neutral-900 leading-relaxed font-semibold"
-              >
-                {paragraph}
-              </p>
-            ))}
-          </div>
-
-          {/* Decorative element */}
-          <div className="mt-12 text-center">
-            <p className="text-4xl">🏠</p>
           </div>
         </div>
       </div>

@@ -9,10 +9,19 @@ export interface ProblemItem {
   title: string;
 }
 
-export interface Testimonial {
+export interface VideoTestimonial {
   id: number;
   name: string;
+  flag: string;
   role: string;
+  text: string;
+  videoUrl?: string;
+  thumbnailUrl?: string;
+}
+
+export interface WrittenTestimonial {
+  id: number;
+  stars: number;
   text: string;
 }
 
