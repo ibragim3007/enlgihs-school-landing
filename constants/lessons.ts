@@ -24,7 +24,7 @@ export const LESSONS_STEPS: LessonStep[] = [
   {
     id: "2",
     number: 2,
-    emoji: "",
+    emoji: "🗣️",
     title:
       "Практикуем разговор в виде игры и взаимодействия с другими учениками",
     subtitle: "Говорим, а не просто выполняем задания",
@@ -33,7 +33,7 @@ export const LESSONS_STEPS: LessonStep[] = [
   {
     id: "3",
     number: 3,
-    emoji: "",
+    emoji: "✅",
     title: "Закрепляем и используем в жизни",
     subtitle: "Фразы переходят в реальную речь ребёнка",
     color: "bg-purple-500",

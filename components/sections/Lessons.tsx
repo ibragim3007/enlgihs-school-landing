@@ -15,11 +15,11 @@ export default function Lessons() {
         </SectionHeading>
 
         {/* Promo bar */}
-        <div className="mb-10 flex max-w-2xl items-center gap-3 rounded-2xl bg-neutral-100 px-5 py-4 lg:mb-12">
+        <div className="mb-10 flex max-w-2xl items-center gap-3 rounded-2xl bg-primary-500 px-5 py-4 lg:mb-12">
           <span className="text-2xl leading-none" aria-hidden>
             📣
           </span>
-          <p className="text-sm leading-snug text-neutral-700 sm:text-base">
+          <p className="text-sm leading-snug text-neutral-700 font-semibold sm:text-base">
             {LESSONS_PROMO}
           </p>
         </div>
@@ -38,9 +38,7 @@ export default function Lessons() {
                   >
                     {step.number}
                   </div>
-                  {!isLast && (
-                    <div className="w-0.5 flex-1 bg-neutral-200" />
-                  )}
+                  {!isLast && <div className="w-0.5 flex-1 bg-neutral-200" />}
                 </div>
 
                 {/* Right: card */}
