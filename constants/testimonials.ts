@@ -1,25 +1,24 @@
 import type { VideoTestimonial, WrittenTestimonial } from "@/types";
 
-export const TESTIMONIALS_HEADING = "Отзывы родителей";
+export const TESTIMONIALS_HEADING = "Отзывы учеников";
 
-export const TESTIMONIALS_SUBTITLE =
-  "Реальные отзывы родителей учеников English Dome";
+export const TESTIMONIALS_SUBTITLE = "Реальные отзывы учеников English Dome";
 
 export const VIDEO_TESTIMONIALS: VideoTestimonial[] = [
   {
     id: 1,
-    name: "Светлана",
+    name: "Алиса",
     flag: "🇷🇺",
-    role: "Мама ученицы, 11 лет",
-    text: "Занятия вдохновляют, ребёнок начал говорить по-английски",
+    role: "Ученица, 6 класс",
+    text: "Наши занятия проходят интересно и продуктивно, у меня улучшились оценки в школе!",
     videoUrl: "/assets/review_1.MP4",
   },
   {
     id: 2,
-    name: "Анна",
+    name: "Арина",
     flag: "🇷🇺",
-    role: "Мама ученика, 9 лет",
-    text: "За полгода занятий сын заговорил и стал учиться на пятёрки.",
+    role: "Ученица, 4 класс",
+    text: "Учетеля все понятно объясняют, теперь я учусь на четыре и пять. Учиться стало интересно благодаря игровой программе!",
     videoUrl: "/assets/review_2.mp4",
   },
 ];
