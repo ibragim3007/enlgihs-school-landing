@@ -36,7 +36,7 @@ export default function Home() {
         <Lessons />
         <Reading />
         <Cabinet />
-        <Ecosystem />
+        {/* <Ecosystem /> */}
         <Packages onOpenForm={openForm} />
         <Psychologist />
         <ForParents />

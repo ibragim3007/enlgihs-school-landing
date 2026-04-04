@@ -38,4 +38,5 @@ export interface Package {
   period: string;
   highlighted: boolean;
   badge?: string;
+  ctaText?: string;
 }

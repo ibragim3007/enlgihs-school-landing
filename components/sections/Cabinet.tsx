@@ -1,45 +1,80 @@
+import Image from "next/image";
 import { SECTION_IDS } from "@/constants/navigation";
 import {
   CABINET_HEADING,
   CABINET_DESCRIPTION,
-  CABINET_FEATURES,
+  CABINET_BENEFITS,
+  CABINET_PREVIEW_SRC,
+  CABINET_PREVIEW_CAPTION,
 } from "@/constants/cabinet";
 import SectionHeading from "@/components/ui/SectionHeading";
 
-export default function Cabinet() {
-  const icons = ["📝", "📚", "🔄", "📊"];
-
+function CheckIcon() {
   return (
-    <section
-      id={SECTION_IDS.cabinet}
-      className="py-16 lg:py-24 bg-gradient-to-br from-primary-50/20 to-white"
+    <svg
+      className="mt-1 h-5 w-5 shrink-0 text-primary-800"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      aria-hidden
     >
+      <path
+        fillRule="evenodd"
+        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
+
+export default function Cabinet() {
+  return (
+    <section id={SECTION_IDS.cabinet} className="py-16 lg:py-24">
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
-        <SectionHeading className="mb-6 lg:mb-10">
-          {CABINET_HEADING}
-        </SectionHeading>
+        <div className="max-w-3xl">
+          <SectionHeading className="mb-4 lg:mb-6">
+            {CABINET_HEADING}
+          </SectionHeading>
 
-        <p className="text-base text-neutral-700 leading-relaxed lg:text-lg max-w-2xl mb-12 lg:mb-16">
-          {CABINET_DESCRIPTION}
-        </p>
+          <p className="text-base leading-relaxed text-neutral-700 lg:text-lg">
+            {CABINET_DESCRIPTION}
+          </p>
+        </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {CABINET_FEATURES.map((feature, idx) => (
-            <div
-              key={feature}
-              className="group flex flex-col items-center justify-center text-center p-8 rounded-2xl bg-white border-2 border-primary-500 hover:border-primary-400 hover:shadow-lg hover:bg-primary-50 transition-all"
-            >
-              {/* Icon */}
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">
-                {icons[idx % icons.length]}
-              </div>
+        <div className="mt-10 flex flex-col gap-10 lg:mt-12 lg:grid lg:grid-cols-2 lg:items-start lg:gap-14">
+          {/* Benefits list */}
+          <ul className="flex flex-col gap-6">
+            {CABINET_BENEFITS.map((b) => (
+              <li key={b.title} className="flex gap-3">
+                <CheckIcon />
+                <div>
+                  <p className="text-sm leading-snug text-neutral-950 sm:text-base lg:text-lg">
+                    <span className="font-bold">{b.title}</span>
+                    <span className="font-bold">{b.bold}</span>
+                  </p>
+                  <p className="mt-1 text-xs leading-relaxed text-neutral-600 sm:text-sm">
+                    {b.subtitle}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
 
-              {/* Text */}
-              <p className="text-base lg:text-lg font-semibold text-neutral-900 leading-relaxed group-hover:text-primary-700 transition-colors">
-                {feature}
-              </p>
+          {/* Cabinet preview */}
+          <div className="flex flex-col items-center">
+            <div className="relative w-full overflow-hidden rounded-2xl bg-neutral-100 shadow-lg sm:rounded-3xl">
+              <Image
+                src={CABINET_PREVIEW_SRC}
+                alt="Скриншот личного кабинета ученика English Dome"
+                width={800}
+                height={600}
+                className="h-auto w-full"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
-          ))}
+            <p className="mt-4 text-center text-xs text-neutral-500 sm:text-sm">
+              {CABINET_PREVIEW_CAPTION}
+            </p>
+          </div>
         </div>
       </div>
     </section>
