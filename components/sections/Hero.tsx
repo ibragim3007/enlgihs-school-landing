@@ -2,9 +2,13 @@ import Image from "next/image";
 import { SECTION_IDS } from "@/constants/navigation";
 import {
   HERO_HEADING,
-  HERO_DESCRIPTION,
+  HERO_SUBLINE_1,
+  HERO_SUBLINE_2,
   HERO_CTA_TEXT,
-  HERO_STATS,
+  HERO_PROMO_BOX_BEFORE,
+  HERO_PROMO_BOX_ACCENT,
+  HERO_VIDEO_CAPTION_BEFORE,
+  HERO_VIDEO_CAPTION_ACCENT,
 } from "@/constants/hero";
 import Button from "@/components/ui/Button";
 
@@ -14,81 +18,78 @@ interface HeroProps {
 
 export default function Hero({ onOpenForm }: HeroProps) {
   return (
-    <section id={SECTION_IDS.hero} className="py-8 lg:py-12">
+    <section
+      id={SECTION_IDS.hero}
+      className="bg-surface pb-10 pt-6 sm:pb-14 sm:pt-8 lg:pb-20 lg:pt-10 xl:pb-24 xl:pt-12"
+    >
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-surface p-6 sm:p-10 lg:p-14">
-          <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
-            {/* Left — Text */}
-            <div className="flex flex-col gap-6">
-              <h1 className="text-3xl font-bold leading-tight text-neutral-950 sm:text-4xl lg:text-[52px] lg:leading-[1.1]">
-                {HERO_HEADING}
-              </h1>
+        <div className="flex flex-col gap-10 lg:grid lg:grid-cols-2 lg:items-center lg:gap-12 xl:gap-16">
+          {/* Text + CTA */}
+          <div className="flex max-w-xl flex-col items-center text-center lg:max-w-none lg:items-start lg:text-left">
+            <h1 className="text-2xl font-bold leading-tight text-neutral-950 sm:text-3xl lg:text-[44px] lg:leading-[1.12] xl:text-[52px]">
+              {HERO_HEADING}
+            </h1>
 
-              <p className="text-base text-neutral-700 leading-relaxed lg:text-lg whitespace-pre-line">
-                {HERO_DESCRIPTION}
-              </p>
+            <p className="mt-5 max-w-md text-sm leading-relaxed text-neutral-700 sm:text-base lg:mt-6 lg:max-w-lg lg:text-lg xl:text-xl">
+              {HERO_SUBLINE_1}
+            </p>
+            <p className="mt-3 max-w-md text-sm leading-relaxed text-neutral-700 sm:text-base lg:mt-4 lg:max-w-lg lg:text-lg xl:text-xl">
+              {HERO_SUBLINE_2}
+            </p>
 
-              <div className="pt-2">
-                <Button
+            <div className="mt-8 w-full max-w-md lg:mt-10 lg:max-w-md">
+              <Button
+                onClick={onOpenForm}
+                className="w-full px-6 py-4 text-base font-semibold sm:text-lg lg:px-10 lg:py-4 lg:text-lg xl:text-xl"
+              >
+                {HERO_CTA_TEXT}
+              </Button>
+            </div>
+
+            <div className="shadow-lg mt-6 w-full max-w-md rounded-2xl bg-neutral-50 px-4 py-4 text-sm leading-snug text-neutral-700 sm:text-base lg:mt-8 lg:px-6 lg:py-5 lg:text-lg">
+              {HERO_PROMO_BOX_BEFORE}
+              <span className="font-medium text-primary-800">
+                {HERO_PROMO_BOX_ACCENT}
+              </span>
+            </div>
+          </div>
+
+          {/* Video + caption */}
+          <div className="flex w-full flex-col items-center lg:items-stretch">
+            <div className="relative w-full overflow-hidden rounded-2xl bg-neutral-100 aspect-[4/3] sm:aspect-video sm:rounded-3xl">
+              <Image
+                src="/assets/kids-picture.png"
+                alt="Дети на занятии English Dome"
+                fill
+                priority
+                className="object-cover"
+                sizes="(max-width: 1023px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <button
+                  type="button"
                   onClick={onOpenForm}
-                  className="text-base lg:text-lg px-10 py-4"
+                  className="flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-white/85 text-neutral-800 shadow-lg backdrop-blur-[2px] transition hover:scale-105 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-800 lg:h-20 lg:w-20"
+                  aria-label="Смотреть, как дети говорят через месяц"
                 >
-                  {HERO_CTA_TEXT}
-                </Button>
+                  <svg
+                    className="ml-1 h-7 w-7 lg:h-9 lg:w-9"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden
+                  >
+                    <path d="M8 5v14l11-7L8 5z" />
+                  </svg>
+                </button>
               </div>
             </div>
 
-            {/* Right — Stats Grid */}
-            <div className="grid grid-cols-2 gap-4">
-              {/* Stat green */}
-              <div className="flex flex-col justify-between rounded-3xl bg-primary-800 p-6 text-white aspect-square sm:p-8">
-                <span className="text-5xl font-bold sm:text-6xl lg:text-7xl">
-                  {HERO_STATS[0].value}
-                </span>
-                <p className="mt-auto text-sm leading-snug text-white/80 sm:text-base">
-                  {HERO_STATS[0].description}
-                </p>
-              </div>
-
-              {/* Kids photo */}
-              <div className="relative rounded-3xl overflow-hidden aspect-square">
-                <Image
-                  src="/assets/kids-picture.png"
-                  alt="Дети изучают английский язык онлайн в школе English Dome — весёлые уроки для школьников 1-11 классов"
-                  fill
-                  // sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 280px"
-                  priority
-                  className="object-cover"
-                />
-              </div>
-
-              {/* Placeholder photo 2 */}
-              <div className="rounded-3xl bg-gradient-to-br from-primary-600/20 to-primary-800/30 aspect-square flex items-center justify-center">
-                <svg
-                  className="h-16 w-16 text-primary-800/40"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-              </div>
-
-              {/* Stat gray */}
-              <div className="flex flex-col justify-between rounded-3xl bg-card p-6 aspect-square sm:p-8">
-                <span className="text-5xl font-bold text-neutral-950 sm:text-6xl lg:text-7xl">
-                  {HERO_STATS[1].value}
-                </span>
-                <p className="mt-auto text-sm leading-snug text-neutral-700 sm:text-base">
-                  {HERO_STATS[1].description}
-                </p>
-              </div>
-            </div>
+            <p className="mt-5 max-w-md text-center text-sm leading-relaxed text-neutral-700 sm:text-base lg:mt-6 lg:max-w-none lg:text-left lg:text-lg xl:text-xl">
+              {HERO_VIDEO_CAPTION_BEFORE}
+              <span className="font-medium text-primary-800">
+                {HERO_VIDEO_CAPTION_ACCENT}
+              </span>
+            </p>
           </div>
         </div>
       </div>

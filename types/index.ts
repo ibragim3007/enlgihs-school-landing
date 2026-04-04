@@ -4,12 +4,6 @@ export interface NavLink {
   sectionId: string;
 }
 
-export interface HeroStat {
-  value: string;
-  description: string;
-  variant: "green" | "gray";
-}
-
 export interface ProblemItem {
   id: number;
   title: string;
