@@ -153,12 +153,12 @@ export default function Hero({ onOpenForm }: HeroProps) {
               </Button>
             </div>
 
-            <div className="shadow-lg mt-6 w-full max-w-md rounded-2xl bg-neutral-50 px-4 py-4 text-sm leading-snug text-neutral-700 sm:text-base lg:mt-8 lg:px-6 lg:py-5 lg:text-lg">
+            {/* <div className="shadow-lg mt-6 w-full max-w-md rounded-2xl bg-neutral-50 px-4 py-4 text-sm leading-snug text-neutral-700 sm:text-base lg:mt-8 lg:px-6 lg:py-5 lg:text-lg">
               {HERO_PROMO_BOX_BEFORE}
               <span className="font-medium text-primary-800">
                 {HERO_PROMO_BOX_ACCENT}
               </span>
-            </div>
+            </div> */}
           </div>
 
           {/* Video + caption */}

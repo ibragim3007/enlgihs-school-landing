@@ -118,8 +118,8 @@ export default function About() {
                 src={ABOUT_LESSONS_PREVIEW_SRC}
                 alt="Иллюстрация: как проходят занятия в English Dome"
                 fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 896px"
+                // className="object-cover"
+                // sizes="(max-width: 1024px) 100vw, 896px"
               />
             </div>
           </div>

@@ -41,6 +41,7 @@ export const PROGRAMS: ProgramCard[] = [
     icon: "cap",
     title: "Нужно подтянуть английский в школе",
     subtitle: "Разберём темы и повысим уверенность",
+    level: "B1",
   },
   {
     id: "5",
@@ -54,3 +55,5 @@ export const PROGRAM_OPTIONS: FormOption[] = PROGRAMS.map((p) => ({
   value: p.title,
   label: p.title,
 }));
+
+export const PROGRAMS_PREVIEW_SRC = "/assets/kids-picture.png";

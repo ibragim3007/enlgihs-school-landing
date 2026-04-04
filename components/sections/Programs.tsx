@@ -1,9 +1,11 @@
 import { SECTION_IDS } from "@/constants/navigation";
+import Image from "next/image";
 import {
   PROGRAMS_HEADING,
   PROGRAMS_DESCRIPTION,
   PROGRAMS,
   type ProgramIconId,
+  PROGRAMS_PREVIEW_SRC,
 } from "@/constants/programs";
 import SectionHeading from "@/components/ui/SectionHeading";
 
@@ -126,7 +128,7 @@ export default function Programs() {
           </p>
         </div>
 
-        <div className="flex flex-col gap-3 lg:max-w-3xl">
+        <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
           {PROGRAMS.map((program) => (
             <div
               key={program.id}
@@ -151,6 +153,15 @@ export default function Programs() {
               </div>
             </div>
           ))}
+        </div>
+        <div className="relative mt-8 w-full overflow-hidden rounded-2xl bg-neutral-100 shadow-sm sm:rounded-3xl aspect-video max-w-4xl lg:mt-10 lg:mx-auto lg:max-w-5xl">
+          <Image
+            src={PROGRAMS_PREVIEW_SRC}
+            alt="Иллюстрация: как проходят занятия в English Dome"
+            fill
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 896px"
+          />
         </div>
       </div>
     </section>

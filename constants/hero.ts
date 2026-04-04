@@ -1,4 +1,4 @@
-export const HERO_HEADING = "Игровой английский для детей 5–10 лет";
+export const HERO_HEADING = "Игровой английский для детей 5+ лет";
 
 export const HERO_SUBLINE_1 =
   "Ребенок начинает говорить простыми фразами уже через 4 недели";
