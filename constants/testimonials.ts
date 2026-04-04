@@ -1,4 +1,4 @@
-import type { VideoTestimonial, WrittenTestimonial } from "@/types";
+import type { VideoTestimonial } from "@/types";
 
 export const TESTIMONIALS_HEADING = "Отзывы учеников";
 
@@ -23,27 +23,10 @@ export const VIDEO_TESTIMONIALS: VideoTestimonial[] = [
   },
 ];
 
-export const WRITTEN_TESTIMONIALS_HEADING = "Письменные отзывы";
+export const WRITTEN_TESTIMONIALS_HEADING = "Отзывы родителей";
 
-export const WRITTEN_TESTIMONIALS: WrittenTestimonial[] = [
-  {
-    id: 1,
-    stars: 5,
-    text: "За полгода занятий сын начал разговаривать на английском. Оценки в школе улучшились с тройки до пятёрки. Преподаватели находят подход к каждому ребёнку.",
-  },
-  {
-    id: 2,
-    stars: 5,
-    text: "Дочь успешно сдала ОГЭ по английскому на 5. Преподаватели отлично готовят к экзаменам. Очень рекомендую школу всем знакомым.",
-  },
-  {
-    id: 3,
-    stars: 5,
-    text: "Ребёнок наконец-то полюбил английский! Занятия проходят в интересном формате — сын ходит с удовольствием. Результаты видны уже через месяц.",
-  },
-  {
-    id: 4,
-    stars: 5,
-    text: "Готовились к ЕГЭ в этой школе. Дочь набрала 92 балла! Системный подход, понятное объяснение всех тем, постоянная практика — всё на высшем уровне.",
-  },
+export const PARENT_TESTIMONIAL_IMAGES = [
+  "/assets/testimonials/testimonial-1.jpg",
+  "/assets/testimonials/testimonial-2.jpg",
+  "/assets/testimonials/testimonial-3.jpg",
 ];

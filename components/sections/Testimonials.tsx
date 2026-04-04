@@ -1,15 +1,22 @@
 "use client";
 
-import { useRef, useState, useCallback } from "react";
+import {
+  useRef,
+  useState,
+  useCallback,
+  useEffect,
+  type TouchEvent,
+} from "react";
 import { SECTION_IDS } from "@/constants/navigation";
 import {
   TESTIMONIALS_HEADING,
   TESTIMONIALS_SUBTITLE,
   VIDEO_TESTIMONIALS,
   WRITTEN_TESTIMONIALS_HEADING,
-  WRITTEN_TESTIMONIALS,
+  PARENT_TESTIMONIAL_IMAGES,
 } from "@/constants/testimonials";
 import type { VideoTestimonial } from "@/types";
+import Image from "next/image";
 
 function StarRating({ count }: { count: number }) {
   return (
@@ -97,6 +104,150 @@ function VideoCard({ testimonial }: { testimonial: VideoTestimonial }) {
   );
 }
 
+function ParentTestimonialsSlider() {
+  const total = PARENT_TESTIMONIAL_IMAGES.length;
+  const [current, setCurrent] = useState(0);
+  const touchStartX = useRef(0);
+  const touchDeltaX = useRef(0);
+  const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const goTo = useCallback(
+    (index: number) => {
+      setCurrent(((index % total) + total) % total);
+    },
+    [total],
+  );
+
+  const next = useCallback(() => goTo(current + 1), [current, goTo]);
+  const prev = useCallback(() => goTo(current - 1), [current, goTo]);
+
+  const resetAutoplay = useCallback(() => {
+    if (autoplayRef.current) clearInterval(autoplayRef.current);
+    autoplayRef.current = setInterval(() => {
+      setCurrent((c) => (c + 1) % total);
+    }, 5000);
+  }, [total]);
+
+  useEffect(() => {
+    resetAutoplay();
+    return () => {
+      if (autoplayRef.current) clearInterval(autoplayRef.current);
+    };
+  }, [resetAutoplay]);
+
+  const handleTouchStart = (e: TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchDeltaX.current = 0;
+  };
+
+  const handleTouchMove = (e: TouchEvent) => {
+    touchDeltaX.current = e.touches[0].clientX - touchStartX.current;
+  };
+
+  const handleTouchEnd = () => {
+    const SWIPE_THRESHOLD = 50;
+    if (touchDeltaX.current < -SWIPE_THRESHOLD) {
+      next();
+      resetAutoplay();
+    } else if (touchDeltaX.current > SWIPE_THRESHOLD) {
+      prev();
+      resetAutoplay();
+    }
+  };
+
+  return (
+    <div>
+      <div
+        className="relative overflow-hidden rounded-2xl"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        <div
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${current * 100}%)` }}
+        >
+          {PARENT_TESTIMONIAL_IMAGES.map((src, i) => (
+            <div key={src} className="w-full shrink-0 px-1">
+              <div className="mx-auto max-w-md overflow-hidden rounded-2xl bg-white shadow-md">
+                <Image
+                  src={src}
+                  alt={`Отзыв родителя ${i + 1}`}
+                  width={600}
+                  height={800}
+                  className="w-full h-auto"
+                  sizes="(max-width: 640px) 100vw, 448px"
+                  priority={i === 0}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <button
+          onClick={() => {
+            prev();
+            resetAutoplay();
+          }}
+          className="absolute left-2 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 shadow-md backdrop-blur-sm transition-colors hover:bg-white"
+          aria-label="Предыдущий отзыв"
+        >
+          <svg
+            className="h-5 w-5 text-neutral-700"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </button>
+
+        <button
+          onClick={() => {
+            next();
+            resetAutoplay();
+          }}
+          className="absolute right-2 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 shadow-md backdrop-blur-sm transition-colors hover:bg-white"
+          aria-label="Следующий отзыв"
+        >
+          <svg
+            className="h-5 w-5 text-neutral-700"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <div className="mt-6 flex justify-center gap-2.5">
+        {PARENT_TESTIMONIAL_IMAGES.map((src, i) => (
+          <button
+            key={src}
+            onClick={() => {
+              goTo(i);
+              resetAutoplay();
+            }}
+            className={`h-2.5 rounded-full transition-all duration-300 ${
+              i === current
+                ? "w-8 bg-primary-700"
+                : "w-2.5 bg-neutral-300 hover:bg-neutral-400"
+            }`}
+            aria-label={`Отзыв ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Testimonials() {
   return (
     <section id={SECTION_IDS.testimonials} className="py-16 lg:py-24">
@@ -108,32 +259,18 @@ export default function Testimonials() {
           {TESTIMONIALS_SUBTITLE}
         </p>
 
-        {/* Video testimonials */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-14 lg:mb-20">
           {VIDEO_TESTIMONIALS.map((t) => (
             <VideoCard key={t.id} testimonial={t} />
           ))}
         </div>
 
-        {/* Written testimonials */}
         <div className="border-t border-neutral-200 pt-10 lg:pt-14">
           <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-neutral-950 mb-8 lg:mb-10">
             {WRITTEN_TESTIMONIALS_HEADING}
           </h3>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {WRITTEN_TESTIMONIALS.map((t) => (
-              <div
-                key={t.id}
-                className="rounded-2xl bg-gradient-to-b from-primary-50/80 to-primary-100/40 p-5 sm:p-6"
-              >
-                <StarRating count={t.stars} />
-                <p className="mt-4 text-sm sm:text-base text-neutral-800 leading-relaxed">
-                  {t.text}
-                </p>
-              </div>
-            ))}
-          </div>
+          <ParentTestimonialsSlider />
         </div>
       </div>
     </section>
