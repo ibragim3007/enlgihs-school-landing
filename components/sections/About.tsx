@@ -50,7 +50,9 @@ export default function About() {
         <div className="rounded-3xl bg-surface p-6 sm:p-10 lg:p-14">
           <div className="flex flex-col gap-10 lg:gap-12">
             <div className="max-w-3xl">
-              <SectionHeading className="mb-6 lg:mb-8">{ABOUT_HEADING}</SectionHeading>
+              <SectionHeading className="mb-6 lg:mb-8">
+                {ABOUT_HEADING}
+              </SectionHeading>
 
               <p className="text-base leading-relaxed text-neutral-700 lg:text-lg">
                 {ABOUT_INTRO}
@@ -66,7 +68,9 @@ export default function About() {
               </ul>
 
               <p className="mt-6 text-base leading-relaxed text-neutral-700 lg:text-lg">
-                <span className="font-semibold text-neutral-950">Атмосфера: </span>
+                <span className="font-semibold text-neutral-950">
+                  Атмосфера:{" "}
+                </span>
                 {ABOUT_ATMOSPHERE}
               </p>
 
@@ -117,22 +121,6 @@ export default function About() {
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 896px"
               />
-              <div className="absolute inset-0 flex items-center justify-center bg-neutral-950/5">
-                <a
-                  href={ABOUT_VIDEO_LINK_HREF}
-                  className="flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-neutral-800 shadow-lg backdrop-blur-[2px] transition hover:scale-105 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-800 lg:h-20 lg:w-20"
-                  aria-label="Посмотреть, как проходят занятия"
-                >
-                  <svg
-                    className="ml-1 h-7 w-7 lg:h-9 lg:w-9"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden
-                  >
-                    <path d="M8 5v14l11-7L8 5z" />
-                  </svg>
-                </a>
-              </div>
             </div>
           </div>
         </div>

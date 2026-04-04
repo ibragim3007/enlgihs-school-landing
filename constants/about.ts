@@ -20,7 +20,7 @@ export const ABOUT_VIDEO_LINK_TEXT = "Посмотрите, как проход�
 
 export const ABOUT_VIDEO_LINK_HREF = `#${SECTION_IDS.lessons}` as const;
 
-export const ABOUT_LESSONS_PREVIEW_SRC = "/assets/about-lessons-preview.png";
+export const ABOUT_LESSONS_PREVIEW_SRC = "/assets/about-lessons-preview.jpeg";
 
 export const ABOUT_STATS = [
   {
