@@ -67,26 +67,20 @@ export default function Founder() {
         {/* Bottom: quote card + certs */}
         <div className="grid lg:grid-cols-[1fr_auto] gap-6 lg:gap-8 items-end">
           <div className="rounded-3xl bg-gradient-to-br from-primary-50 to-primary-100/60 p-6 sm:p-8 lg:p-10 space-y-5">
-            <p className="text-lg sm:text-xl lg:text-2xl font-semibold text-neutral-900 leading-snug">
-              <span className="text-primary-400 text-3xl lg:text-4xl leading-none">
-                &ldquo;
-              </span>
+            <p className="text-md sm:text-md lg:text-md font-semibold text-neutral-900 leading-snug">
               {FOUNDER_QUOTE.split(FOUNDER_QUOTE_HIGHLIGHT).map(
                 (part, i, arr) =>
                   i < arr.length - 1 ? (
                     <span key={i}>
                       {part}
-                      <strong className="font-bold">
+                      <strong className="font-bold text-primary-800">
                         {FOUNDER_QUOTE_HIGHLIGHT}
                       </strong>
                     </span>
                   ) : (
                     <span key={i}>{part}</span>
-                  )
+                  ),
               )}
-              <span className="text-primary-400 text-3xl lg:text-4xl leading-none">
-                &rdquo;
-              </span>
             </p>
 
             <p className="text-sm sm:text-base text-neutral-700 leading-relaxed">
@@ -105,8 +99,8 @@ export default function Founder() {
               <span className="text-yellow-400 text-2xl">⭐</span>
               <span className="text-sm sm:text-base text-neutral-700">
                 Оценка{" "}
-                <span className="font-bold text-neutral-900">97/100</span>{" "}
-                по международной шкале
+                <span className="font-bold text-neutral-900">97/100</span> по
+                международной шкале
               </span>
             </div>
           </div>
