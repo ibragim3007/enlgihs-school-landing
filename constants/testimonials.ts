@@ -12,8 +12,7 @@ export const VIDEO_TESTIMONIALS: VideoTestimonial[] = [
     flag: "🇷🇺",
     role: "Мама ученицы, 11 лет",
     text: "Занятия вдохновляют, ребёнок начал говорить по-английски",
-    thumbnailUrl: "",
-    videoUrl: "",
+    videoUrl: "/assets/review_1.MP4",
   },
   {
     id: 2,
@@ -21,8 +20,7 @@ export const VIDEO_TESTIMONIALS: VideoTestimonial[] = [
     flag: "🇷🇺",
     role: "Мама ученика, 9 лет",
     text: "За полгода занятий сын заговорил и стал учиться на пятёрки.",
-    thumbnailUrl: "",
-    videoUrl: "",
+    videoUrl: "/assets/review_2.mp4",
   },
 ];
 

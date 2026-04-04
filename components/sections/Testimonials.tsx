@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useState, useCallback } from "react";
 import { SECTION_IDS } from "@/constants/navigation";
 import {
   TESTIMONIALS_HEADING,
@@ -8,6 +9,7 @@ import {
   WRITTEN_TESTIMONIALS_HEADING,
   WRITTEN_TESTIMONIALS,
 } from "@/constants/testimonials";
+import type { VideoTestimonial } from "@/types";
 
 function StarRating({ count }: { count: number }) {
   return (
@@ -26,18 +28,71 @@ function StarRating({ count }: { count: number }) {
   );
 }
 
-function PlayButton() {
+function VideoCard({ testimonial }: { testimonial: VideoTestimonial }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+
+  const toggle = useCallback(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.paused) {
+      v.play();
+      setPlaying(true);
+    } else {
+      v.pause();
+      setPlaying(false);
+    }
+  }, []);
+
+  const mimeType = testimonial.videoUrl?.toLowerCase().endsWith(".mov")
+    ? "video/quicktime"
+    : "video/mp4";
+
   return (
-    <div className="absolute inset-0 flex items-center justify-center">
-      <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 shadow-lg backdrop-blur-sm transition-transform hover:scale-110">
-        <svg
-          className="h-6 w-6 text-primary-600 ml-1"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-        >
-          <path d="M8 5v14l11-7z" />
-        </svg>
+    <div className="flex flex-col">
+      <div
+        className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-neutral-900 mb-3 cursor-pointer group"
+        onClick={toggle}
+      >
+        {testimonial.videoUrl ? (
+          <video
+            ref={videoRef}
+            className="h-full w-full object-cover"
+            playsInline
+            preload="metadata"
+            loop
+          >
+            <source src={testimonial.videoUrl} type={mimeType} />
+          </video>
+        ) : (
+          <div className="w-full h-full bg-gradient-to-b from-primary-100 to-primary-200" />
+        )}
+
+        {!playing && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/10">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 shadow-lg backdrop-blur-sm transition-transform group-hover:scale-110">
+              <svg
+                className="h-6 w-6 text-primary-600 ml-1"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        )}
       </div>
+
+      <StarRating count={5} />
+
+      <p className="mt-2 text-sm sm:text-base font-semibold text-neutral-900">
+        {testimonial.name}{" "}
+        <span className="text-base">{testimonial.flag}</span>
+      </p>
+      <p className="text-xs sm:text-sm text-neutral-500">{testimonial.role}</p>
+      <p className="mt-2 text-xs sm:text-sm text-neutral-700 leading-relaxed">
+        {testimonial.text}
+      </p>
     </div>
   );
 }
@@ -56,31 +111,7 @@ export default function Testimonials() {
         {/* Video testimonials */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-14 lg:mb-20">
           {VIDEO_TESTIMONIALS.map((t) => (
-            <div key={t.id} className="flex flex-col">
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-neutral-200 mb-3 cursor-pointer group">
-                {t.thumbnailUrl ? (
-                  <img
-                    src={t.thumbnailUrl}
-                    alt={t.name}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full bg-gradient-to-b from-primary-100 to-primary-200" />
-                )}
-                <PlayButton />
-              </div>
-
-              <StarRating count={5} />
-
-              <p className="mt-2 text-sm sm:text-base font-semibold text-neutral-900">
-                {t.name}{" "}
-                <span className="text-base">{t.flag}</span>
-              </p>
-              <p className="text-xs sm:text-sm text-neutral-500">{t.role}</p>
-              <p className="mt-2 text-xs sm:text-sm text-neutral-700 leading-relaxed">
-                {t.text}
-              </p>
-            </div>
+            <VideoCard key={t.id} testimonial={t} />
           ))}
         </div>
 
