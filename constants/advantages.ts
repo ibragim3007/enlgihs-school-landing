@@ -1,31 +1,53 @@
-import type { Advantage } from "@/types";
+export type AdvantageIconId =
+  | "speech-heart"
+  | "thumbs-up"
+  | "treasure"
+  | "chart-up"
+  | "house";
 
-export const ADVANTAGES_HEADING = "Почему родители выбирают English Dome";
+export const ADVANTAGES_HEADING =
+  "Почему дети начинают говорить в English Dome";
 
-export const ADVANTAGES: Advantage[] = [
+export const ADVANTAGES_CARDS: {
+  id: string;
+  icon: AdvantageIconId;
+  title: string;
+  subtitle: string;
+}[] = [
   {
-    id: 1,
-    title: "Преподаватели с международной сертификацией",
-    description: "TESOL, TEFL, высшее образование и опыт более 5 лет",
+    id: "1",
+    icon: "speech-heart",
+    title: "Ребёнок начинает говорить уже с первых уроков",
+    subtitle: "Через игру и диалог",
   },
   {
-    id: 2,
-    title: "Концепция «английский дома»",
-    description: "Комфортная и поддерживающая среда без стресса",
+    id: "2",
+    icon: "thumbs-up",
+    title: "Ребёнок не боится говорить и ошибаться",
+    subtitle: "Поддерживающая атмосфера",
   },
   {
-    id: 3,
-    title: "Современная платформа",
-    description: "Личный кабинет ученика с ДЗ и материалами 24/7",
+    id: "3",
+    icon: "treasure",
+    title: "Интересно как игра — ребёнок сам хочет заниматься",
+    subtitle: "Уроки как приключение",
   },
   {
-    id: 4,
-    title: "Полноценная языковая среда",
-    description: "Практики, клубы, воркшопы",
+    id: "4",
+    icon: "chart-up",
+    title: "Вы видите реальный прогресс ребёнка",
+    subtitle: "Понятные результаты и обратная связь",
   },
   {
-    id: 5,
-    title: "Прозрачный результат",
-    description: "Отчёты и обратная связь для родителей",
+    id: "5",
+    icon: "speech-heart",
+    title: "Английский становится частью жизни ребёнка",
+    subtitle: "Практика вне уроков",
+  },
+  {
+    id: "6",
+    icon: "house",
+    title: "Удобно для родителей",
+    subtitle: "Все материалы в одном месте",
   },
 ];
