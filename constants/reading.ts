@@ -8,3 +8,5 @@ export const READING_FEATURES = [
   "правила чтения",
   "правильное произношение",
 ];
+
+export const READING_PREVIEW_SRC = "/assets/reading-preview.jpg";

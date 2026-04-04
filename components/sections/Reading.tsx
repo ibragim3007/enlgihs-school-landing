@@ -3,8 +3,10 @@ import {
   READING_HEADING,
   READING_DESCRIPTION,
   READING_FEATURES,
+  READING_PREVIEW_SRC,
 } from "@/constants/reading";
 import SectionHeading from "@/components/ui/SectionHeading";
+import Image from "next/image";
 
 export default function Reading() {
   return (
@@ -40,6 +42,17 @@ export default function Reading() {
               </li>
             ))}
           </ul>
+          <div className="mt-8 lg:mt-12 max-w-lg">
+            <div className="relative w-full overflow-hidden rounded-2xl bg-neutral-100 shadow-sm sm:rounded-3xl aspect-video">
+              <Image
+                src={READING_PREVIEW_SRC}
+                alt="Иллюстрация: как проходят занятия в English Dome"
+                fill
+                // className="object-cover"
+                // sizes="(max-width: 740px) 100vw, 384px"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
