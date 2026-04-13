@@ -5,8 +5,13 @@ import {
   LESSONS_STEPS,
 } from "@/constants/lessons";
 import SectionHeading from "@/components/ui/SectionHeading";
+import SectionSignupFooter from "@/components/ui/SectionSignupFooter";
 
-export default function Lessons() {
+interface LessonsProps {
+  onOpenForm: () => void;
+}
+
+export default function Lessons({ onOpenForm }: LessonsProps) {
   return (
     <section id={SECTION_IDS.lessons} className="py-16 lg:py-24">
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">

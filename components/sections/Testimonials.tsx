@@ -17,6 +17,7 @@ import {
 } from "@/constants/testimonials";
 import type { VideoTestimonial } from "@/types";
 import Image from "next/image";
+import SectionSignupFooter from "@/components/ui/SectionSignupFooter";
 
 function StarRating({ count }: { count: number }) {
   return (
@@ -93,8 +94,7 @@ function VideoCard({ testimonial }: { testimonial: VideoTestimonial }) {
       <StarRating count={5} />
 
       <p className="mt-2 text-sm sm:text-base font-semibold text-neutral-900">
-        {testimonial.name}{" "}
-        <span className="text-base">{testimonial.flag}</span>
+        {testimonial.name} <span className="text-base">{testimonial.flag}</span>
       </p>
       <p className="text-xs sm:text-sm text-neutral-500">{testimonial.role}</p>
       <p className="mt-2 text-xs sm:text-sm text-neutral-700 leading-relaxed">
@@ -248,7 +248,11 @@ function ParentTestimonialsSlider() {
   );
 }
 
-export default function Testimonials() {
+interface TestimonialsProps {
+  onOpenForm: () => void;
+}
+
+export default function Testimonials({ onOpenForm }: TestimonialsProps) {
   return (
     <section id={SECTION_IDS.testimonials} className="py-16 lg:py-24">
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">

@@ -10,7 +10,6 @@ import Programs from "@/components/sections/Programs";
 import Lessons from "@/components/sections/Lessons";
 import Reading from "@/components/sections/Reading";
 import Cabinet from "@/components/sections/Cabinet";
-import Ecosystem from "@/components/sections/Ecosystem";
 import Packages from "@/components/sections/Packages";
 import Psychologist from "@/components/sections/Psychologist";
 import ForParents from "@/components/sections/ForParents";
@@ -30,18 +29,18 @@ export default function Home() {
       <Header onOpenForm={openForm} />
       <main>
         <Hero onOpenForm={openForm} />
-        <About />
-        <Advantages />
-        <Programs />
-        <Lessons />
-        <Reading />
-        <Cabinet />
+        <About onOpenForm={openForm} />
+        <Advantages onOpenForm={openForm} />
+        <Programs onOpenForm={openForm} />
+        <Lessons onOpenForm={openForm} />
+        <Reading onOpenForm={openForm} />
+        <Cabinet onOpenForm={openForm} />
         {/* <Ecosystem /> */}
         <Packages onOpenForm={openForm} />
-        <Psychologist />
-        <ForParents />
-        <Founder />
-        <Testimonials />
+        <Psychologist onOpenForm={openForm} />
+        <ForParents onOpenForm={openForm} />
+        <Founder onOpenForm={openForm} />
+        <Testimonials onOpenForm={openForm} />
         <FinalCTA onOpenForm={openForm} />
       </main>
       <Footer />

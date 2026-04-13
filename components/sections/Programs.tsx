@@ -8,6 +8,7 @@ import {
   PROGRAMS_PREVIEW_SRC,
 } from "@/constants/programs";
 import SectionHeading from "@/components/ui/SectionHeading";
+import SectionSignupFooter from "@/components/ui/SectionSignupFooter";
 
 const iconClass = "h-6 w-6 text-primary-800";
 
@@ -117,7 +118,11 @@ function ProgramIcon({ id }: { id: ProgramIconId }) {
   }
 }
 
-export default function Programs() {
+interface ProgramsProps {
+  onOpenForm: () => void;
+}
+
+export default function Programs({ onOpenForm }: ProgramsProps) {
   return (
     <section id={SECTION_IDS.programs} className="py-16 lg:py-24">
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
@@ -163,6 +168,8 @@ export default function Programs() {
             sizes="(max-width: 1024px) 100vw, 896px"
           />
         </div>
+
+        <SectionSignupFooter onOpenForm={onOpenForm} />
       </div>
     </section>
   );

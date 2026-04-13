@@ -7,6 +7,7 @@ import {
 } from "@/constants/packages";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
+import SectionSignupFooter from "@/components/ui/SectionSignupFooter";
 
 interface PackagesProps {
   onOpenForm: () => void;
@@ -89,9 +90,7 @@ export default function Packages({ onOpenForm }: PackagesProps) {
                     {pkg.currency}
                   </span>
                 </p>
-                <p className="mt-1 text-sm text-neutral-500">
-                  / {pkg.period}
-                </p>
+                <p className="mt-1 text-sm text-neutral-500">/ {pkg.period}</p>
               </div>
 
               <Button

@@ -12,8 +12,13 @@ import {
   FOUNDER_CLOSING,
   FOUNDER_CERT_EFSET,
 } from "@/constants/founder";
+import SectionSignupFooter from "@/components/ui/SectionSignupFooter";
 
-export default function Founder() {
+interface FounderProps {
+  onOpenForm: () => void;
+}
+
+export default function Founder({ onOpenForm }: FounderProps) {
   return (
     <section id={SECTION_IDS.founder} className="py-16 lg:py-24">
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">

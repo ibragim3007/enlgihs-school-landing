@@ -5,6 +5,7 @@ import {
   type AdvantageIconId,
 } from "@/constants/advantages";
 import SectionHeading from "@/components/ui/SectionHeading";
+import SectionSignupFooter from "@/components/ui/SectionSignupFooter";
 
 const iconClass = "h-6 w-6 text-primary-800";
 
@@ -115,7 +116,11 @@ function AdvantageIcon({ id }: { id: AdvantageIconId }) {
   }
 }
 
-export default function Advantages() {
+interface AdvantagesProps {
+  onOpenForm: () => void;
+}
+
+export default function Advantages({ onOpenForm }: AdvantagesProps) {
   return (
     <section id={SECTION_IDS.advantages} className="py-16 lg:py-24">
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
@@ -141,6 +146,8 @@ export default function Advantages() {
             </article>
           ))}
         </div>
+
+        <SectionSignupFooter onOpenForm={onOpenForm} />
       </div>
     </section>
   );

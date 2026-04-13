@@ -13,6 +13,7 @@ import {
   ABOUT_STATS,
 } from "@/constants/about";
 import SectionHeading from "@/components/ui/SectionHeading";
+import SectionSignupFooter from "@/components/ui/SectionSignupFooter";
 
 function CheckBullet({ children }: { children: ReactNode }) {
   return (
@@ -43,7 +44,11 @@ function CheckBullet({ children }: { children: ReactNode }) {
   );
 }
 
-export default function About() {
+interface AboutProps {
+  onOpenForm: () => void;
+}
+
+export default function About({ onOpenForm }: AboutProps) {
   return (
     <section id={SECTION_IDS.about} className="py-16 lg:py-24">
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
@@ -124,6 +129,8 @@ export default function About() {
             </div>
           </div>
         </div>
+
+        <SectionSignupFooter onOpenForm={onOpenForm} />
       </div>
     </section>
   );

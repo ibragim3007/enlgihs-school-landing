@@ -5,6 +5,7 @@ import {
   FINAL_CTA_BUTTON,
 } from "@/constants/final-cta";
 import Button from "@/components/ui/Button";
+import SectionSignupFooter from "@/components/ui/SectionSignupFooter";
 
 interface FinalCTAProps {
   onOpenForm: () => void;

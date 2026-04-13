@@ -8,6 +8,7 @@ import {
   CABINET_PREVIEW_CAPTION,
 } from "@/constants/cabinet";
 import SectionHeading from "@/components/ui/SectionHeading";
+import SectionSignupFooter from "@/components/ui/SectionSignupFooter";
 
 function CheckIcon() {
   return (
@@ -26,7 +27,11 @@ function CheckIcon() {
   );
 }
 
-export default function Cabinet() {
+interface CabinetProps {
+  onOpenForm: () => void;
+}
+
+export default function Cabinet({ onOpenForm }: CabinetProps) {
   return (
     <section id={SECTION_IDS.cabinet} className="py-16 lg:py-24">
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">

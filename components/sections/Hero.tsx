@@ -19,6 +19,7 @@ import {
   HERO_VIDEO_CAPTION_ACCENT,
 } from "@/constants/hero";
 import Button from "@/components/ui/Button";
+import SectionSignupFooter from "@/components/ui/SectionSignupFooter";
 
 interface HeroProps {
   onOpenForm: () => void;

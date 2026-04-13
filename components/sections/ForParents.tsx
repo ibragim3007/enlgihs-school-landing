@@ -9,8 +9,13 @@ import {
   FOR_PARENTS_QUOTE,
   FOR_PARENTS_BOTTOM_NOTE,
 } from "@/constants/for-parents";
+import SectionSignupFooter from "@/components/ui/SectionSignupFooter";
 
-export default function ForParents() {
+interface ForParentsProps {
+  onOpenForm: () => void;
+}
+
+export default function ForParents({ onOpenForm }: ForParentsProps) {
   return (
     <section id={SECTION_IDS.forParents} className="py-16 lg:py-24">
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
@@ -85,6 +90,8 @@ export default function ForParents() {
             </p>
           </div>
         </div>
+
+        <SectionSignupFooter onOpenForm={onOpenForm} />
       </div>
     </section>
   );

@@ -6,9 +6,14 @@ import {
   READING_PREVIEW_SRC,
 } from "@/constants/reading";
 import SectionHeading from "@/components/ui/SectionHeading";
+import SectionSignupFooter from "@/components/ui/SectionSignupFooter";
 import Image from "next/image";
 
-export default function Reading() {
+interface ReadingProps {
+  onOpenForm: () => void;
+}
+
+export default function Reading({ onOpenForm }: ReadingProps) {
   return (
     <section id={SECTION_IDS.reading} className="py-16 lg:py-24">
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
@@ -54,6 +59,8 @@ export default function Reading() {
             </div>
           </div>
         </div>
+
+        <SectionSignupFooter onOpenForm={onOpenForm} />
       </div>
     </section>
   );
