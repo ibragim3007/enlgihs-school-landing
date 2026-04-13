@@ -27,7 +27,7 @@ export const VIDEO_TESTIMONIALS: VideoTestimonial[] = [
     flag: "🇪🇸",
     role: "Ученик, 5 класс",
     text: "Я учу английский с Полиной уже на протяжении 6 лет. За это время я начал свободно говорить на английском и перешел в группу с повышенным уровнем английского в школе.",
-    videoUrl: "/assets/review_3.mp4",
+    videoUrl: "/assets/review_3-new.mp4",
   },
   {
     id: 4,

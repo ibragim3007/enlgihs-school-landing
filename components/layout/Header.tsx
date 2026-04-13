@@ -26,7 +26,7 @@ export default function Header({ onOpenForm }: HeaderProps) {
             className="flex items-center gap-2 text-xl font-bold text-primary-800"
           >
             <Image
-              src="/icon.jpeg"
+              src="/icon-v1.png"
               alt=""
               width={80}
               height={80}
