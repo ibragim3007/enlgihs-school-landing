@@ -66,7 +66,7 @@ export default function Cabinet({ onOpenForm }: CabinetProps) {
 
           {/* Cabinet preview */}
           <div className="flex flex-col items-center">
-            <div className="relative w-full overflow-hidden rounded-2xl bg-neutral-100 shadow-lg sm:rounded-3xl">
+            <div className="relative w-full overflow-hidden rounded-2xl sm:rounded-3xl">
               <Image
                 src={CABINET_PREVIEW_SRC}
                 alt="Скриншот личного кабинета ученика English Dome"

@@ -25,5 +25,5 @@ export const CABINET_BENEFITS: {
   },
 ];
 
-export const CABINET_PREVIEW_SRC = "/assets/cabinet-preview-old.jpg";
+export const CABINET_PREVIEW_SRC = "/assets/cabinet-preview-old.png";
 export const CABINET_PREVIEW_CAPTION = "Так выглядит личный кабинет ученика";

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import {
   NAV_LINKS,
   SCHOOL_NAME,
@@ -24,9 +25,14 @@ export default function Header({ onOpenForm }: HeaderProps) {
             href="#"
             className="flex items-center gap-2 text-xl font-bold text-primary-800"
           >
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary-800 text-sm font-bold text-white">
-              ES
-            </span>
+            <Image
+              src="/icon.jpeg"
+              alt=""
+              width={80}
+              height={80}
+              className="h-9 w-auto max-w-[88px] shrink-0 object-contain lg:h-10 lg:max-w-[100px]"
+              priority
+            />
             {SCHOOL_NAME}
           </a>
 
