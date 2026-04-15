@@ -25,7 +25,7 @@ export default function Psychologist({ onOpenForm }: PsychologistProps) {
         </SectionHeading>
 
         <p className="text-base lg:text-lg text-neutral-700 leading-relaxed max-w-2xl mb-10 lg:mb-14">
-          В <span className="text-primary-700 font-medium">English Dome</span>{" "}
+          В <span className="text-primary-800 font-bold">English Dome</span>{" "}
           есть поддержка психолога, которая помогает ребёнку справляться со
           страхами, неуверенностью и адаптироваться к обучению
         </p>

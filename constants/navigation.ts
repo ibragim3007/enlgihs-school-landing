@@ -26,19 +26,19 @@ export const NAV_LINKS: NavLink[] = [
     sectionId: SECTION_IDS.about,
   },
   {
-    label: "Направления",
-    href: `#${SECTION_IDS.programs}`,
-    sectionId: SECTION_IDS.programs,
-  },
-  {
     label: "Преимущества",
     href: `#${SECTION_IDS.advantages}`,
     sectionId: SECTION_IDS.advantages,
   },
   {
-    label: "Диагностика",
-    href: `#${SECTION_IDS.diagnostics}`,
-    sectionId: SECTION_IDS.diagnostics,
+    label: "Направления",
+    href: `#${SECTION_IDS.programs}`,
+    sectionId: SECTION_IDS.programs,
+  },
+  {
+    label: "Формат обучения",
+    href: `#${SECTION_IDS.packages}`,
+    sectionId: SECTION_IDS.packages,
   },
   {
     label: "Отзывы",

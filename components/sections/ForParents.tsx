@@ -32,7 +32,7 @@ export default function ForParents({ onOpenForm }: ForParentsProps) {
 
           {/* Right — card with benefits */}
           <div className="rounded-3xl bg-gradient-to-b from-primary-50 to-primary-100/60 p-6 sm:p-8 lg:p-10 space-y-6">
-            <p className="text-sm font-bold text-primary-700 uppercase tracking-wide">
+            <p className="text-sm font-bold text-primary-800 uppercase tracking-wide">
               🎯 Вы получаете:
             </p>
 
@@ -42,7 +42,7 @@ export default function ForParents({ onOpenForm }: ForParentsProps) {
                   key={benefit}
                   className="flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm"
                 >
-                  <span className="flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-full bg-primary-600 text-white text-sm">
+                  <span className="flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-full bg-primary-800 text-white text-sm">
                     ✓
                   </span>
                   <span className="text-sm sm:text-base lg:text-lg text-neutral-800 font-medium">
@@ -55,12 +55,12 @@ export default function ForParents({ onOpenForm }: ForParentsProps) {
             <p className="text-sm lg:text-base text-neutral-600 leading-relaxed">
               {FOR_PARENTS_TARIFF_NOTE.split(/(Home|Dome)/g).map((part, i) =>
                 part === "Home" || part === "Dome" ? (
-                  <span key={i} className="font-semibold text-primary-700">
+                  <span key={i} className="font-semibold text-primary-800">
                     {part}
                   </span>
                 ) : (
                   <span key={i}>{part}</span>
-                )
+                ),
               )}
             </p>
 
@@ -69,7 +69,8 @@ export default function ForParents({ onOpenForm }: ForParentsProps) {
                 👨‍👩‍👧
               </div>
               <p className="text-base sm:text-lg lg:text-xl font-semibold text-neutral-900 leading-snug pr-12">
-                &quot;{FOR_PARENTS_QUOTE.split("начинает говорить").map(
+                &quot;
+                {FOR_PARENTS_QUOTE.split("начинает говорить").map(
                   (part, i, arr) =>
                     i < arr.length - 1 ? (
                       <span key={i}>
@@ -78,7 +79,7 @@ export default function ForParents({ onOpenForm }: ForParentsProps) {
                       </span>
                     ) : (
                       <span key={i}>{part}</span>
-                    )
+                    ),
                 )}
                 &quot;
               </p>

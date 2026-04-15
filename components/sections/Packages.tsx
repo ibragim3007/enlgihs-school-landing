@@ -52,7 +52,7 @@ export default function Packages({ onOpenForm }: PackagesProps) {
               }`}
             >
               {pkg.badge && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-primary-700 px-5 py-1.5 text-xs font-semibold text-white">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-primary-800 px-5 py-1.5 text-xs font-semibold text-white">
                   {pkg.badge}
                 </div>
               )}
@@ -62,7 +62,7 @@ export default function Packages({ onOpenForm }: PackagesProps) {
               <h3 className="text-2xl font-bold text-neutral-950">
                 {pkg.name}
               </h3>
-              <p className="mt-1 text-sm font-semibold text-primary-700">
+              <p className="mt-1 text-sm font-semibold text-primary-800">
                 {pkg.tagline}
               </p>
               {pkg.description && (
