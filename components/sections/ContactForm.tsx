@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "@/components/ui/Modal";
 import Button from "@/components/ui/Button";
 import { PROGRAM_OPTIONS } from "@/constants/programs";
@@ -15,17 +15,52 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
   const [program, setProgram] = useState("");
   const [messenger, setMessenger] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    if (isOpen) {
+      setSubmitError(null);
+    }
+  }, [isOpen]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setPhone("");
-      setProgram("");
-      setMessenger("");
-      onClose();
-    }, 2000);
+    setSubmitError(null);
+    setIsSubmitting(true);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phone, program, messenger }),
+      });
+
+      const data = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
+        error?: string;
+      };
+
+      if (!res.ok) {
+        setSubmitError(
+          data.error ?? "Не удалось отправить заявку. Попробуйте позже.",
+        );
+        return;
+      }
+
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setPhone("");
+        setProgram("");
+        setMessenger("");
+        onClose();
+      }, 2000);
+    } catch {
+      setSubmitError("Нет соединения. Проверьте интернет и попробуйте снова.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -124,12 +159,22 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
               </select>
             </div>
 
+            {submitError ? (
+              <p
+                className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800"
+                role="alert"
+              >
+                {submitError}
+              </p>
+            ) : null}
+
             <Button
               variant="secondary"
               type="submit"
-              className="mt-2 w-full py-3.5 text-base"
+              disabled={isSubmitting}
+              className="mt-2 w-full py-3.5 text-base disabled:opacity-60"
             >
-              Записаться
+              {isSubmitting ? "Отправка…" : "Записаться"}
             </Button>
           </form>
         </>
