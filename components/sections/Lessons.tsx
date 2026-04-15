@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { SECTION_IDS } from "@/constants/navigation";
 import {
   LESSONS_HEADING,
@@ -5,7 +6,6 @@ import {
   LESSONS_STEPS,
 } from "@/constants/lessons";
 import SectionHeading from "@/components/ui/SectionHeading";
-import SectionSignupFooter from "@/components/ui/SectionSignupFooter";
 
 interface LessonsProps {
   onOpenForm: () => void;
@@ -61,6 +61,19 @@ export default function Lessons({ onOpenForm }: LessonsProps) {
               </div>
             );
           })}
+        </div>
+
+        <div className="mt-10 lg:mt-14">
+          <div className="overflow-hidden rounded-2xl bg-neutral-100 shadow-sm sm:rounded-3xl">
+            <Image
+              src="/assets/lesson.jpg"
+              alt="Онлайн-занятие: ученики English Dome на видеосвязи с преподавателем"
+              width={1280}
+              height={800}
+              className="h-auto w-full object-cover"
+              sizes="(max-width: 1400px) 100vw, 1400px"
+            />
+          </div>
         </div>
       </div>
     </section>
