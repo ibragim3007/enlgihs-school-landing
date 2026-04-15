@@ -26,9 +26,29 @@ function messengerLabel(code: string): string {
   return MESSENGER_LABELS[code] ?? code;
 }
 
+/** Московское время, формат как в таблице: 15.03.2026 15:41 */
+const SUBMITTED_AT_TIMEZONE = "Europe/Moscow";
+
+function formatSubmittedAt(date: Date): string {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: SUBMITTED_AT_TIMEZONE,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).formatToParts(date);
+
+  const pick = (type: Intl.DateTimeFormatPart["type"]) =>
+    parts.find((p) => p.type === type)?.value ?? "";
+
+  return `${pick("day")}.${pick("month")}.${pick("year")} ${pick("hour")}:${pick("minute")}`;
+}
+
 /** `addRow` requires a non-empty header row; empty sheets need `setHeaderRow` first. */
 const DEFAULT_HEADER_ROW = [
-  "Дата (UTC)",
+  "Дата и время (МСК)",
   "Телефон",
   "Программа",
   "Мессенджер",
@@ -114,7 +134,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const submittedAt = new Date().toISOString();
+    const submittedAt = formatSubmittedAt(new Date());
 
     await ensureHeaderRow(sheet);
 
