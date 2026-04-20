@@ -1,0 +1,33 @@
+name: Deploy Next.js App
+
+on:
+  push:
+    branches:
+      - main # Укажите ветку, при пуше в которую должен идти деплой (main или master)
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to Selectel Server
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            # Переходим в папку с проектом
+            cd /root/enlgihs-school-landing/
+
+            # Подтягиваем свежий код
+            git pull origin main
+
+            # Устанавливаем новые зависимости (если появились)
+            npm install
+
+            # Билдим проект
+            npm run build
+
+            # Перезапускаем PM2 для применения изменений
+            pm2 restart next-app
