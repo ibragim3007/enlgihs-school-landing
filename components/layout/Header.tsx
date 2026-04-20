@@ -22,7 +22,7 @@ export default function Header({ onOpenForm }: HeaderProps) {
         <div className="flex h-16 items-center justify-between lg:h-20">
           {/* Logo */}
           <a
-            href="#"
+            href="/"
             className="flex items-center gap-2 text-xl font-bold text-primary-800"
           >
             <Image

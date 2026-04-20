@@ -5,6 +5,7 @@ import {
   FOOTER_EMAIL,
   FOOTER_ADDRESS,
   SOCIAL_LINKS,
+  LEGAL_LINKS,
 } from "@/constants/footer";
 
 function FooterSocialIcon({ platform }: { platform: string }) {
@@ -147,9 +148,30 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Divider + Copyright */}
-        <div className="mt-12 border-t border-neutral-800 pt-8 text-center text-sm text-neutral-400">
-          &copy; {year} {SCHOOL_NAME}. Все права защищены.
+        {/* Divider + Copyright + Legal */}
+        <div className="mt-12 border-t border-neutral-800 pt-8">
+          <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
+            <p className="text-center text-sm text-neutral-400 sm:text-left">
+              &copy; {year} {SCHOOL_NAME}. Все права защищены.
+            </p>
+            <nav
+              aria-label="Правовая информация"
+              className="text-center sm:text-right"
+            >
+              <ul className="flex flex-col gap-3 text-sm text-neutral-300">
+                {LEGAL_LINKS.map((link) => (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      className="transition-colors hover:text-white underline-offset-2 hover:underline"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,5 +1,14 @@
 import type { SocialLink } from "@/types";
 
+export const LEGAL_LINKS = [
+  { href: "/policy", label: "Политика конфиденциальности" },
+  { href: "/offer-agreement", label: "Договор-оферта" },
+  {
+    href: "/personal-data-consent",
+    label: "Согласие на обработку персональных данных",
+  },
+] as const;
+
 export const FOOTER_PHONE = "+79180883150";
 
 /** Ссылка на чат WhatsApp с тем же номером, что в контактах */

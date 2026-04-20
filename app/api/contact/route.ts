@@ -46,12 +46,15 @@ function formatSubmittedAt(date: Date): string {
   return `${pick("day")}.${pick("month")}.${pick("year")} ${pick("hour")}:${pick("minute")}`;
 }
 
+const CONSENT_HEADER = "Согласие";
+
 /** `addRow` requires a non-empty header row; empty sheets need `setHeaderRow` first. */
 const DEFAULT_HEADER_ROW = [
   "Дата и время (МСК)",
   "Телефон",
   "Программа",
   "Мессенджер",
+  CONSENT_HEADER,
 ] as const;
 
 async function ensureHeaderRow(
@@ -70,6 +73,18 @@ async function ensureHeaderRow(
     }
     throw err;
   }
+}
+
+/** Дополняет строку заголовков колонкой согласия, если таблица создана раньше без неё. */
+async function ensureConsentHeaderColumn(
+  sheet: GoogleSpreadsheetWorksheet,
+): Promise<void> {
+  await sheet.loadHeaderRow();
+  const headers = sheet.headerValues;
+  if (headers.includes(CONSENT_HEADER)) {
+    return;
+  }
+  await sheet.setHeaderRow([...headers, CONSENT_HEADER]);
 }
 
 export async function POST(request: Request) {
@@ -102,7 +117,10 @@ export async function POST(request: Request) {
       );
     }
 
-    const { phone, program, messenger } = body as Record<string, unknown>;
+    const { phone, program, messenger, legalConsent } = body as Record<
+      string,
+      unknown
+    >;
 
     if (typeof phone !== "string" || !phone.trim()) {
       return NextResponse.json(
@@ -111,11 +129,16 @@ export async function POST(request: Request) {
       );
     }
 
+    if (legalConsent !== true) {
+      return NextResponse.json(
+        { ok: false, error: "Consent is required" },
+        { status: 400 },
+      );
+    }
+
     const programStr = typeof program === "string" ? program : "";
     const messengerCode = typeof messenger === "string" ? messenger : "";
-    const messengerStr = messengerCode
-      ? messengerLabel(messengerCode)
-      : "";
+    const messengerStr = messengerCode ? messengerLabel(messengerCode) : "";
 
     const auth = new JWT({
       email: serviceAccountEmail,
@@ -137,13 +160,18 @@ export async function POST(request: Request) {
     const submittedAt = formatSubmittedAt(new Date());
 
     await ensureHeaderRow(sheet);
+    await ensureConsentHeaderColumn(sheet);
+    await sheet.loadHeaderRow();
 
-    await sheet.addRow([
-      submittedAt,
-      phone.trim(),
-      programStr,
-      messengerStr,
-    ]);
+    const consentLabel = "Да";
+
+    await sheet.addRow({
+      "Дата и время (МСК)": submittedAt,
+      Телефон: phone.trim(),
+      Программа: programStr,
+      Мессенджер: messengerStr,
+      [CONSENT_HEADER]: consentLabel,
+    } as Record<string, string>);
 
     return NextResponse.json({ ok: true }, { status: 200 });
   } catch (err) {

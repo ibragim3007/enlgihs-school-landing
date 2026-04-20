@@ -22,27 +22,27 @@ export const SECTION_IDS = {
 export const NAV_LINKS: NavLink[] = [
   {
     label: "О школе",
-    href: `#${SECTION_IDS.about}`,
+    href: `/#${SECTION_IDS.about}`,
     sectionId: SECTION_IDS.about,
   },
   {
     label: "Преимущества",
-    href: `#${SECTION_IDS.advantages}`,
+    href: `/#${SECTION_IDS.advantages}`,
     sectionId: SECTION_IDS.advantages,
   },
   {
     label: "Направления",
-    href: `#${SECTION_IDS.programs}`,
+    href: `/#${SECTION_IDS.programs}`,
     sectionId: SECTION_IDS.programs,
   },
   {
     label: "Формат обучения",
-    href: `#${SECTION_IDS.packages}`,
+    href: `/#${SECTION_IDS.packages}`,
     sectionId: SECTION_IDS.packages,
   },
   {
     label: "Отзывы",
-    href: `#${SECTION_IDS.testimonials}`,
+    href: `/#${SECTION_IDS.testimonials}`,
     sectionId: SECTION_IDS.testimonials,
   },
 ];

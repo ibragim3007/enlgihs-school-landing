@@ -17,6 +17,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [legalConsent, setLegalConsent] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -33,7 +34,12 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phone, program, messenger }),
+        body: JSON.stringify({
+          phone,
+          program,
+          messenger,
+          legalConsent: legalConsent === true,
+        }),
       });
 
       const data = (await res.json().catch(() => ({}))) as {
@@ -54,6 +60,7 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
         setPhone("");
         setProgram("");
         setMessenger("");
+        setLegalConsent(false);
         onClose();
       }, 2000);
     } catch {
@@ -167,6 +174,59 @@ export default function ContactForm({ isOpen, onClose }: ContactFormProps) {
                 {submitError}
               </p>
             ) : null}
+
+            <div className="flex gap-3">
+              <input
+                id="contact-legal-consent"
+                type="checkbox"
+                required
+                checked={legalConsent}
+                onChange={(e) => setLegalConsent(e.target.checked)}
+                className="mt-0.5 h-4 w-4 shrink-0 rounded border-neutral-300 text-primary-800 focus:ring-2 focus:ring-primary-700/25"
+              />
+              <label
+                htmlFor="contact-legal-consent"
+                className="text-sm leading-relaxed text-neutral-600"
+              >
+                Нажимая на кнопку, я даю{" "}
+                <a
+                  href="/personal-data-consent"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-primary-800 underline decoration-primary-800/40 underline-offset-2 transition-colors hover:text-primary-900 hover:decoration-primary-900"
+                >
+                  Согласие на обработку персональных данных
+                </a>{" "}
+                на условиях{" "}
+                <a
+                  href="/policy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-primary-800 underline decoration-primary-800/40 underline-offset-2 transition-colors hover:text-primary-900 hover:decoration-primary-900"
+                >
+                  Политики конфиденциальности
+                </a>
+                . С{" "}
+                <a
+                  href="/offer-agreement"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-primary-800 underline decoration-primary-800/40 underline-offset-2 transition-colors hover:text-primary-900 hover:decoration-primary-900"
+                >
+                  публичной офертой
+                </a>{" "}
+                ознакомлен и даю{" "}
+                <a
+                  href="/personal-data-consent#s3"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-primary-800 underline decoration-primary-800/40 underline-offset-2 transition-colors hover:text-primary-900 hover:decoration-primary-900"
+                >
+                  Согласие на получение рассылки рекламного характера
+                </a>
+                .
+              </label>
+            </div>
 
             <Button
               variant="secondary"
