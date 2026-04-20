@@ -17,17 +17,21 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            # Переходим в папку с проектом
+            # 1. Добавляем стандартные пути, где обычно лежат npm и pm2
+            export PATH=$PATH:/usr/local/bin:/usr/bin:/bin
+
+            # 2. Если вы устанавливали Node.js через nvm (Node Version Manager), загружаем его
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+            # --- Дальше ваш обычный скрипт ---
+
             cd /root/enlgihs-school-landing/
 
-            # Подтягиваем свежий код
             git pull origin main
 
-            # Устанавливаем новые зависимости (если появились)
             npm install
 
-            # Билдим проект
             npm run build
 
-            # Перезапускаем PM2 для применения изменений
             pm2 restart next-app
