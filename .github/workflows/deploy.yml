@@ -34,4 +34,4 @@ jobs:
 
             npm run build
 
-            pm2 restart next-app
+            pm2 restart english-dome
